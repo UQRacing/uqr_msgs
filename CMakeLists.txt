@@ -8,8 +8,8 @@ find_package(catkin REQUIRED COMPONENTS
         std_msgs)
 
 add_message_files(FILES
-        VehicleCmdVel.msg
-        VehicleSafety.msg
+        CmdVel.msg
+        Safety.msg
         )
 
 generate_messages(DEPENDENCIES std_msgs geometry_msgs)
