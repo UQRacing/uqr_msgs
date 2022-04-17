@@ -4,6 +4,4 @@ This repo contains the ROS messages for the autonomous vehicle. Based on the [RO
 Author: Matt Young
 
 ## Building
-Should just be `catkin build`.
-
-To use it in other projects: (TODO)
+Should just be `catkin build`. After that, it will become available in all other UQRacing projects automatically.

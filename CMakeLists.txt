@@ -10,7 +10,8 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(FILES
         CmdVel.msg
         Safety.msg
-        )
+        PPUnknownDebug.msg
+)
 
 generate_messages(DEPENDENCIES std_msgs geometry_msgs)
 
