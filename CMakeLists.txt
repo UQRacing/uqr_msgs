@@ -11,6 +11,7 @@ add_message_files(FILES
         CmdVel.msg
         Safety.msg
         PPUnknownDebug.msg
+        ConePair.msg
 )
 
 generate_messages(DEPENDENCIES std_msgs geometry_msgs)

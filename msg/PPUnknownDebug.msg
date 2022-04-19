@@ -4,6 +4,8 @@ std_msgs/Header header
 geometry_msgs/Polygon observedBlueCones
 # Yellow cones we observed (after filtering, etc)
 geometry_msgs/Polygon observedYellowCones
+# Cone pairs between yellow and blue cones
+uqr_msgs/ConePair[] conePairs
 
 # Current generated trajectory
 geometry_msgs/Polygon currentTrajectory
