@@ -16,6 +16,8 @@ add_message_files(FILES
         DepthImage.msg
         Rect2D.msg
         VAMSoundRequest.msg
+        NNConeDetection.msg
+        NNConeDetections.msg
 )
 
 generate_messages(DEPENDENCIES std_msgs geometry_msgs sensor_msgs)

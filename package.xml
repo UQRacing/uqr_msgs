@@ -7,7 +7,7 @@
   <author email="m.young2@uqconnect.edu.au">Matt Young</author>
   <maintainer email="m.young2@uqconnect.edu.au">Matt Young</maintainer>
 
-  <license>TODO</license>
+  <license>Mozilla Public License v2.0</license>
 
   <!-- Dependencies which this package needs to build itself. -->
   <buildtool_depend>catkin</buildtool_depend>

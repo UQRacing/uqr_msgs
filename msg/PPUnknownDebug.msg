@@ -1,3 +1,5 @@
+# This message was used for debugging Matt's unknown path planner, it may be unused as of now?
+
 std_msgs/Header header
 
 # Blue cones we observed (after filtering, etc)
