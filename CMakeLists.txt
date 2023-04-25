@@ -20,6 +20,7 @@ add_message_files(FILES
         NNConeDetections.msg
         Cone3D.msg
         Perception.msg
+        HardwareDemand.msg
 )
 
 generate_messages(DEPENDENCIES std_msgs geometry_msgs sensor_msgs)
