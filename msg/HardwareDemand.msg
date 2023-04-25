@@ -7,10 +7,10 @@ std_msgs/Float64 brake
 
 ####### Demand #######
 # steering: Demand angle in radians | 0 = straight ahead | +ve = left | -ve = right
-# throttle: Torque demand in percentage [0,1] | 0 = no throttle | 1 = full throttle
+# throttle: Vehicle m/s demand [0,-]
 # brake: Demand in percentage [0,1] | 0 = no brake | 1 = full brake
 
 ####### Feedback #######
 # steering: Current angle in radians | 0 = straight ahead | +ve = left | -ve = right
-# throttle: Current rpm ???
+# throttle: Current rpm [0,-]
 # brake: Current position in percentage [0,1] | 0 = no brake | 1 = full brake
