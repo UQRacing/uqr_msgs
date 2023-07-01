@@ -21,6 +21,7 @@ add_message_files(FILES
         Cone3D.msg
         Perception.msg
         HardwareDemand.msg
+        Command.msg
 )
 
 generate_messages(DEPENDENCIES std_msgs geometry_msgs sensor_msgs)
