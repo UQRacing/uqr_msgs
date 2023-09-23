@@ -23,6 +23,7 @@ add_message_files(FILES
         HardwareDemand.msg
         Command.msg
         HomeMotor.msg
+        Map.msg
 )
 
 generate_messages(DEPENDENCIES std_msgs geometry_msgs sensor_msgs)
