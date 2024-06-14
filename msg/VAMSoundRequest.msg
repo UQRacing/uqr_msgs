@@ -7,4 +7,4 @@ int32 VAM_SOUND_ACTIVATE=0
 # See VAM docs for more details.
 
 # Which safety sound (see above) to play
-int32 soundType
+int32 sound_type
