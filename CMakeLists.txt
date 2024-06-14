@@ -29,8 +29,13 @@ set(msg_files
   "msg/ConePair.msg"
   "msg/NNConeDetections.msg"
   "msg/Rect2D.msg"
+  "msg/HardwareDemand.msg"
+  "mag/Command.msg"
+  "msg/HomeMotor.msg"
+  "msg/Map.msg"
 
 )
+
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
   DEPENDENCIES builtin_interfaces std_msgs geometry_msgs sensor_msgs
