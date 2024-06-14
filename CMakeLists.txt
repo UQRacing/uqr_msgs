@@ -30,7 +30,7 @@ set(msg_files
   "msg/NNConeDetections.msg"
   "msg/Rect2D.msg"
   "msg/HardwareDemand.msg"
-  "mag/Command.msg"
+  "msg/Command.msg"
   "msg/HomeMotor.msg"
   "msg/Map.msg"
 
