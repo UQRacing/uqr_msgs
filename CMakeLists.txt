@@ -33,7 +33,6 @@ set(msg_files
   "msg/Command.msg"
   "msg/HomeMotor.msg"
   "msg/Map.msg"
-
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
