@@ -1,5 +1,5 @@
 # This file is a message for requesting the VAM to emit a particular safety sound
-# TODO add header!
+std_msgs/Header header
 
 # VAM activate sound
 int32 VAM_SOUND_ACTIVATE=0
@@ -7,4 +7,4 @@ int32 VAM_SOUND_ACTIVATE=0
 # See VAM docs for more details.
 
 # Which safety sound (see above) to play
-int32 soundType
+int32 sound_type
