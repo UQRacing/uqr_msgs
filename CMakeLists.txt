@@ -25,6 +25,7 @@ set(msg_files
   "msg/Safety.msg"
   "msg/Cone3D.msg"
   "msg/NNConeDetection.msg"
+<<<<<<< Updated upstream
   "msg/PPUnknownDebug.msg"
   "msg/VAMSoundRequest.msg"
   "msg/ConePair.msg"
@@ -33,6 +34,11 @@ set(msg_files
   "msg/HardwareDemand.msg"
   "msg/Command.msg"
   "msg/HomeMotor.msg"
+=======
+  "msg/VAMSoundRequest.msg"
+  "msg/NNConeDetections.msg"
+  "msg/Rect2D.msg"
+>>>>>>> Stashed changes
   "msg/Map.msg"
 )
 
