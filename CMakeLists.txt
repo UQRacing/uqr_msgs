@@ -18,6 +18,7 @@ find_package(geometry_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 
 set(msg_files
+  "msg/AVStatus.msg"
   "msg/CmdVel.msg"
   "msg/DepthImage.msg"
   "msg/Perception.msg"
