@@ -14,25 +14,16 @@ find_package(ament_cmake REQUIRED)
 find_package(builtin_interfaces REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(geometry_msgs REQUIRED)
-find_package(sensor_msgs REQUIRED)
 
 set(msg_files
   "msg/AVStatus.msg"
-  "msg/DepthImage.msg"
-  "msg/Perception.msg"
   "msg/Safety.msg"
-  "msg/Cone3D.msg"
-  "msg/NNConeDetection.msg"
   "msg/VAMSoundRequest.msg"
-  "msg/NNConeDetections.msg"
-  "msg/Rect2D.msg"
-  "msg/Map.msg"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
-  DEPENDENCIES builtin_interfaces std_msgs geometry_msgs sensor_msgs
+  DEPENDENCIES builtin_interfaces std_msgs
   ADD_LINTER_TESTS
 )
 
