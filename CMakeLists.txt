@@ -4,10 +4,10 @@ project(uqr_msgs)
 
 # Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
-  set(CMAKE_CXX_STANDARD 14)
+    set(CMAKE_CXX_STANDARD 14)
 endif()
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  add_compile_options(-Wall -Wextra -Wpedantic)
+    add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
 find_package(ament_cmake REQUIRED)
@@ -18,16 +18,17 @@ find_package(geometry_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 
 set(msg_files
-  "msg/AVStatus.msg"
-  "msg/DepthImage.msg"
-  "msg/Perception.msg"
-  "msg/Safety.msg"
-  "msg/Cone3D.msg"
-  "msg/NNConeDetection.msg"
-  "msg/VAMSoundRequest.msg"
-  "msg/NNConeDetections.msg"
-  "msg/Rect2D.msg"
-  "msg/Map.msg"
+    "msg/AVStatus.msg"
+    "msg/DepthImage.msg"
+    "msg/Perception.msg"
+    "msg/Safety.msg"
+    "msg/Cone3D.msg"
+    "msg/NNConeDetection.msg"
+    "msg/VAMSoundRequest.msg"
+    "msg/NNConeDetections.msg"
+    "msg/Rect2D.msg"
+    "msg/Map.msg"
+    "msg/Command.msg"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
