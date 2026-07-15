@@ -29,6 +29,8 @@ set(msg_files
     "msg/Rect2D.msg"
     "msg/Map.msg"
     "msg/Command.msg"
+    "msg/SteeringCommand.msg"
+    "msg/MotecCommand.msg"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}

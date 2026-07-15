@@ -1,2 +1,2 @@
 float32 wheelAngle
-uint16 steeringVelocity 
+uint16 velocity 
