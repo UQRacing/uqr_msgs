@@ -18,8 +18,11 @@ find_package(geometry_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 
 set(msg_files
+  "msg/AVDebug.msg"
   "msg/AVStatus.msg"
   "msg/DepthImage.msg"
+  "msg/InverterFeedback.msg"
+  "msg/MotorFeedback.msg"
   "msg/Perception.msg"
   "msg/Safety.msg"
   "msg/Cone3D.msg"

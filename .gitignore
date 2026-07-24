@@ -69,6 +69,8 @@ msg/*ActionFeedback.msg
 msg/*ActionGoal.msg
 msg/*ActionResult.msg
 msg/*Feedback.msg
+!msg/InverterFeedback.msg
+!msg/MotorFeedback.msg
 msg/*Goal.msg
 msg/*Result.msg
 msg/_*.py
