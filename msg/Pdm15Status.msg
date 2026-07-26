@@ -1,42 +1,41 @@
-# MoTeC PDM15 standard CAN telemetry snapshot, aggregated from the compound
-# messages at base 0x700 (PDM User Manual, "CAN Output Messages", 20 Hz):
-#   +0 input states / internal temp / battery / global error / total current,
-#   +1 output currents, +2 output loads, +3 output voltages,
-#   +4 output status, +5 input voltages.
-# Published on each summary (base+0, compound 3) arrival with the latest
-# data from the other compounds.
+# MoTeC PDM15 device snapshot, published on /pdm15.
+# Aggregates the M150 -> PDM15 command frame (0x128), the PDM's 0x520
+# heartbeat echo, and its standard CAN telemetry (base 0x700, per the PDM
+# User Manual appendix). Output channel names come from the config in the
+# av-firmware repo at runtime. Published on each telemetry summary frame
+# (20 Hz) and immediately whenever a command field changes.
 
-uint8 OUTPUT_STATUS_OFF=0
-uint8 OUTPUT_STATUS_ON=1
-uint8 OUTPUT_STATUS_OVER_CURRENT=2
-uint8 OUTPUT_STATUS_FAULT=4
-
-# header.stamp is the receive time of the triggering summary frame.
+# header.stamp is the receive time of the triggering frame.
 std_msgs/Header header
 
-# Switch input states, index 0 = input 1.
-bool[23] input_state
-# Input pin voltages (0.2 V steps), index 0 = input 1.
-float32[23] input_voltage_v
+# --- command state (0x128, M150 -> PDM15, sampled from 500 Hz) ---
+bool cmd_brake_light
+bool cmd_buzzer
+bool cmd_sdc
+bool cmd_r2d_buzzer
+bool cmd_ebs_buzzer
+bool cmd_asms
+# 4-bit AV heartbeat value the M150 asks the PDM to echo.
+uint8 cmd_heartbeat_echo
+bool cmd_heartbeat_stop_alert
 
-# PDM internal temperature (1 degC steps).
+# Last heartbeat echo the PDM15 transmitted back on 0x520.
+uint8 heartbeat_echo
+
+# --- standard telemetry (base 0x700) ---
 uint8 internal_temp_c
-# Battery voltage (0.1216 V steps).
+# 0.1216 V steps on the wire.
 float32 battery_v
 # One or more outputs is in Fault or Over-Current error.
 bool global_error
-# Total current (1 A steps).
 uint8 total_current_a
-# 9.5 V internal rail voltage (0.0615 V steps).
+# 9.5 V internal rail (0.0615 V steps).
 float32 rail_9v5_v
 uint8 reset_source
 
-# Per-output telemetry, index 0 = output channel 1 (PDM15: 15 channels).
-# Currents: outputs 1-8 in 0.5 A steps, outputs 9+ in 0.2 A steps.
-float32[15] output_current_a
-# Load in percent of the configured fuse current.
-uint8[15] output_load_pct
-# Output pin voltages (0.2 V steps).
-float32[15] output_voltage_v
-# OUTPUT_STATUS_* values.
-uint8[15] output_status
+# Per-output telemetry, index 0 = output channel 1.
+Pdm15Output[15] outputs
+
+# Switch inputs, index 0 = input 1 (0.2 V steps for voltages).
+bool[23] input_state
+float32[23] input_voltage_v

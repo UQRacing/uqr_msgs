@@ -1,22 +1,21 @@
-# Prohelion BMU battery telemetry snapshot, aggregated from the broadcast
-# set at base 0x600 (0x6F4-0x6FD) plus the Ignition frame 0x505, layouts per
-# av-firmware dbc/BMU.dbc and the Prohelion BMS comms spec (SOC values are
-# IEEE-754 floats on the wire; pack voltage/current are integer mV/mA —
-# both verified against live bus captures).
-# Published on each PackVoltageCurrent (0x6FA) arrival with the latest data
-# from the other frames.
+# Accumulator (HV battery) snapshot, published on /accum.
+# Aggregates the Prohelion BMU broadcast set (base 0x600, 0x6F4-0x6FD),
+# the per-CMU cell broadcasts (0x601-0x612) and the M150 -> BMU Ignition
+# frame (0x505). Published on each PackVoltageCurrent (0x6FA) arrival
+# (10 Hz). SOC values are IEEE-754 floats on the wire; pack voltage/current
+# are integer mV/mA — both verified against live captures.
 
 # header.stamp is the receive time of the triggering 0x6FA frame.
 std_msgs/Header header
 
-# Heartbeat / identity (0x600, 0x6FD).
+# Identity (0x600, 0x6FD).
 uint32 device_id
 int32 serial_number
 uint8 bmu_hardware_version
 uint8 bmu_model_id
 
-# State of charge (0x6F4, 0x6F5). Percent fields are 0-100; the Ah fields
-# are amp-hours consumed since full, per the Prohelion spec.
+# State of charge. Percent fields are 0-100; the Ah fields are amp-hours
+# consumed since full, per the Prohelion spec.
 float32 soc_ah
 float32 soc_percent
 float32 balance_soc_ah
@@ -26,8 +25,7 @@ float32 balance_soc_percent
 float32 pack_voltage_v
 float32 pack_current_a
 
-# Cell extremes (0x6F8, 0x6F9). Voltages in mV, temps in degC; the CMU and
-# cell indices locate the extreme cell.
+# Cell extremes (0x6F8, 0x6F9); CMU/cell indices locate the extreme cell.
 uint16 min_cell_voltage_mv
 uint16 max_cell_voltage_mv
 uint8 min_cell_voltage_cmu
@@ -41,12 +39,12 @@ uint8 min_cell_temp_cell
 uint8 max_cell_temp_cmu
 uint8 max_cell_temp_cell
 
-# Precharge (0x6F7). State is the raw Prohelion enum.
+# Precharge (0x6F7); state is the raw Prohelion enum.
 uint8 precharge_contactor_driver_status
 uint8 precharge_state
 uint16 contactor_12v_supply_mv
 
-# Fan / housekeeping currents (0x6FC).
+# Fan / housekeeping (0x6FC).
 uint16 fan_speed_0_rpm
 uint16 fan_speed_1_rpm
 uint16 fan_and_contactors_current_ma
@@ -80,3 +78,6 @@ bool status_cmu_extra_cell
 
 # Ignition frame 0x505 (M150 -> BMU), raw value.
 uint8 ignition
+
+# Per-CMU cell telemetry, index 0 = CMU 1.
+CmuCells[6] cmus
