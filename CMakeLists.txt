@@ -18,6 +18,12 @@ find_package(geometry_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 
 set(msg_files
+  "msg/CanFrame.msg"
+  "msg/CanSourceStatus.msg"
+  "msg/CanBusStatus.msg"
+  "msg/C125Menu.msg"
+  "msg/VamSpeedRequest.msg"
+
   "msg/AVDebug.msg"
   "msg/AVStatus.msg"
   "msg/AccumulatorStatus.msg"

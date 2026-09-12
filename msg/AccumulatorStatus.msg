@@ -81,3 +81,6 @@ uint8 ignition
 
 # Per-CMU cell telemetry, index 0 = CMU 1.
 CmuCells[6] cmus
+
+# Consult source freshness before interpreting held snapshot values.
+CanSourceStatus[] sources

@@ -5,7 +5,8 @@
 # av-firmware repo at runtime. Published on each telemetry summary frame
 # (20 Hz) and immediately whenever a command field changes.
 
-# header.stamp is the receive time of the triggering frame.
+# header.stamp is snapshot time (periodic tick or triggering frame).
+# sources[].last_received is the acquisition time for each constituent.
 std_msgs/Header header
 
 # --- command state (0x117, M150 -> P14, sampled from 500 Hz) ---
@@ -34,3 +35,6 @@ uint8 counter_2
 
 # Per-output telemetry, index 0 = output channel 1.
 P14Output[14] outputs
+
+# Consult source freshness before interpreting held snapshot values.
+CanSourceStatus[] sources

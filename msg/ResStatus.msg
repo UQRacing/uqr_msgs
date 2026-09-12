@@ -11,3 +11,6 @@ bool alive_bit_a
 bool alive_bit_b
 # Signed radio link quality as transmitted.
 int8 radio_quality
+
+# Consult source freshness before interpreting held snapshot values.
+CanSourceStatus[] sources

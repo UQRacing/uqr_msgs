@@ -5,7 +5,8 @@
 # av-firmware repo at runtime. Published on each telemetry summary frame
 # (20 Hz) and immediately whenever a command field changes.
 
-# header.stamp is the receive time of the triggering frame.
+# header.stamp is snapshot time (periodic tick or triggering frame).
+# sources[].last_received is the acquisition time for each constituent.
 std_msgs/Header header
 
 # --- command state (0x128, M150 -> PDM15, sampled from 500 Hz) ---
@@ -14,6 +15,8 @@ bool cmd_buzzer
 bool cmd_sdc
 bool cmd_r2d_buzzer
 bool cmd_ebs_buzzer
+bool cmd_aux1_switch
+bool cmd_boot_signal
 bool cmd_asms
 # 4-bit AV heartbeat value the M150 asks the PDM to echo.
 uint8 cmd_heartbeat_echo
@@ -39,3 +42,6 @@ Pdm15Output[15] outputs
 # Switch inputs, index 0 = input 1 (0.2 V steps for voltages).
 bool[23] input_state
 float32[23] input_voltage_v
+
+# Consult source freshness before interpreting held snapshot values.
+CanSourceStatus[] sources

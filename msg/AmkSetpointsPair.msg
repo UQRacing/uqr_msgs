@@ -7,3 +7,6 @@ std_msgs/Header header
 
 AmkSetpoints left
 AmkSetpoints right
+
+# Consult source freshness before interpreting held snapshot values.
+CanSourceStatus[] sources

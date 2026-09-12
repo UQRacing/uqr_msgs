@@ -1,0 +1,22 @@
+# Current av-firmware Dash.Menu 0x3F3. Values remain raw enum codes.
+std_msgs/Header header
+uint8 menu_state
+uint8 page
+bool page_is_drive
+bool page_is_autonomous
+bool page_is_debug
+bool checkup_test
+uint8 cursor
+bool dcdc_override
+bool ts_override
+uint8 ebs_override
+uint8 fan_override
+uint8 item
+uint8 edit_value
+uint8 mission
+uint8 torque_map
+uint8 pump_override
+uint8 tc_mode
+uint8 regen
+uint8 checkup_status
+CanSourceStatus[] sources

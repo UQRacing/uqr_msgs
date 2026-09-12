@@ -16,8 +16,8 @@ bool dc_on
 bool enable
 bool error_reset
 
-# Speed setpoint; raw value in the AMK unit (raw * 6 = rpm, matching the
-# M150's conversion for the actual-values speed).
+# Speed setpoint in native signed rpm. target_velocity_rpm = raw, scale 1.
+# Older logger versions incorrectly multiplied the rpm field by six.
 int16 target_velocity_raw
 float32 target_velocity_rpm
 
