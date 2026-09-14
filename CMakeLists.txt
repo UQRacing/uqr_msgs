@@ -22,7 +22,7 @@ set(msg_files
   "msg/CanSourceStatus.msg"
   "msg/CanBusStatus.msg"
   "msg/C125Menu.msg"
-  "msg/VamSpeedRequest.msg"
+  "msg/VamMotorCommand.msg"
 
   "msg/AVDebug.msg"
   "msg/AVStatus.msg"
@@ -37,6 +37,8 @@ set(msg_files
   "msg/DepthImage.msg"
   "msg/M1Status.msg"
   "msg/Map.msg"
+  "msg/Command.msg"
+  "msg/MotorCommand.msg"
   "msg/NNConeDetection.msg"
   "msg/NNConeDetections.msg"
   "msg/P14Output.msg"
@@ -47,6 +49,7 @@ set(msg_files
   "msg/Rect2D.msg"
   "msg/ResStatus.msg"
   "msg/Safety.msg"
+  "msg/SteeringCommand.msg"
   "msg/VAMSoundRequest.msg"
 )
 
