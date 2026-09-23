@@ -16,6 +16,26 @@ find_package(rosidl_default_generators REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(Python3 REQUIRED COMPONENTS Interpreter)
+
+# Generate at configure time so rosidl sees the complete interfaces. Any source
+# change reruns CMake, including when invoked through an incremental build.
+set(enum_generator "${CMAKE_CURRENT_SOURCE_DIR}/scripts/generate_firmware_enums.py")
+set(enum_project "${CMAKE_CURRENT_SOURCE_DIR}/firmware/Project.m1prj")
+set(enum_source "${CMAKE_CURRENT_SOURCE_DIR}/firmware/source.json")
+set(enum_template "${CMAKE_CURRENT_SOURCE_DIR}/msg/AVDebug.msg.in")
+set(enum_output "${CMAKE_CURRENT_BINARY_DIR}/firmware_generated")
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
+  "${enum_generator}" "${enum_project}" "${enum_source}" "${enum_template}")
+execute_process(
+  COMMAND "${Python3_EXECUTABLE}" "${enum_generator}"
+    --project "${enum_project}" --source "${enum_source}"
+    --template "${enum_template}" --output "${enum_output}"
+  RESULT_VARIABLE enum_result
+)
+if(NOT enum_result EQUAL 0)
+  message(FATAL_ERROR "M1 firmware enum generation failed")
+endif()
 
 set(msg_files
   "msg/CanFrame.msg"
@@ -24,7 +44,9 @@ set(msg_files
   "msg/C125Menu.msg"
   "msg/VamMotorCommand.msg"
 
-  "msg/AVDebug.msg"
+  "${enum_output}:msg/AVDebug.msg"
+  "${enum_output}:msg/FirmwareEnums.msg"
+  "msg/FirmwareInfo.msg"
   "msg/AVStatus.msg"
   "msg/AccumulatorStatus.msg"
   "msg/AmkActualValues1.msg"
@@ -60,5 +82,15 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 )
 
 ament_export_dependencies(rosidl_default_runtime)
+install(DIRECTORY "${enum_output}/include/" DESTINATION include/${PROJECT_NAME})
+ament_export_include_directories(include/${PROJECT_NAME})
+install(FILES "${enum_output}/firmware_enums.json" DESTINATION share/${PROJECT_NAME}/firmware)
+install(DIRECTORY firmware/ DESTINATION share/${PROJECT_NAME}/firmware)
+install(PROGRAMS scripts/generate_firmware_enums.py DESTINATION lib/${PROJECT_NAME})
+
+if(BUILD_TESTING)
+  find_package(ament_cmake_pytest REQUIRED)
+  ament_add_pytest_test(test_firmware_enums test/test_firmware_enums.py)
+endif()
 
 ament_package()

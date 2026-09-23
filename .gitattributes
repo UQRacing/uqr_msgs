@@ -1,0 +1,2 @@
+# Preserve the exact upstream snapshot bytes used by source.json's SHA-256.
+firmware/Project.m1prj -text whitespace=cr-at-eol
