@@ -1,0 +1,35 @@
+# Typed ROS representation of DFMM CAN frame 0x11A. Raw fields retain wire values.
+# Generated constants use wire values; FirmwareEnums contains signed M1 values.
+@FIRMWARE_CONSTANTS@
+
+std_msgs/Header header
+
+uint8 vehicle_state
+string vehicle_state_name
+uint8 drive_state
+string drive_state_name
+bool vam_timeout
+uint8 heartbeat_failure
+string heartbeat_failure_name
+uint8 dfmm_failure_mode
+string dfmm_failure_mode_name
+uint8 drive_state_failure
+string drive_state_failure_name
+uint8 ebs_control
+string ebs_control_name
+uint8 inverter_left_boot_state
+string inverter_left_boot_state_name
+uint8 inverter_right_boot_state
+string inverter_right_boot_state_name
+uint8 pc_watchdog_status
+string pc_watchdog_status_name
+uint8 precharge_state
+string precharge_state_name
+bool av_emergency
+uint8 checkup_status
+string checkup_status_name
+bool sdc_sense
+bool pc_watchdog_timeout
+bool throttle_main_link_ok
+bool throttle_tracking_link_ok
+bool steering_timeout
