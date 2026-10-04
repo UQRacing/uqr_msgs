@@ -21,6 +21,11 @@ bool nav_confirm
 # --- front wheel speeds (0x3F1 LE / 0x3F2 BE, raw * 6 = rpm) ---
 float32 front_left_wheel_rpm
 float32 front_right_wheel_rpm
+# Rolling speeds using the common circumference for all four tyres.
+# NaN when the source is stale.
+# header.stamp remains snapshot time; inspect per-frame sources for sensor age.
+float32 front_left_speed_mps
+float32 front_right_speed_mps
 
 # --- analog inputs (0x3F8/0x3F9 throttle, 0x3FB brake pressure) ---
 float32 throttle_main_v
