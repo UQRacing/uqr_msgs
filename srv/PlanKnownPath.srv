@@ -1,0 +1,6 @@
+# Reject stale map generations and preserve this identity through worker results.
+uint64 map_generation
+uint64 request_id
+---
+bool success
+string message
