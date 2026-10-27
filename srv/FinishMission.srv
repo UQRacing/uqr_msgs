@@ -1,0 +1,7 @@
+# Publication time and attempt observed by the requesting mission process.
+# Identity prevents cross-attempt delivery; it is not authentication.
+builtin_interfaces/Time stamp
+string attempt_id
+---
+bool success
+string message

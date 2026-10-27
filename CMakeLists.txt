@@ -51,6 +51,8 @@ set(msg_files
   "${enum_output}:msg/FirmwareEnums.msg"
   "msg/FirmwareInfo.msg"
   "msg/AVStatus.msg"
+  "msg/MissionAttempt.msg"
+  "srv/FinishMission.srv"
   "msg/AccumulatorStatus.msg"
   "msg/AmkActualValues1.msg"
   "msg/AmkActualValues2.msg"
